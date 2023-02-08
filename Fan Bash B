@@ -1,0 +1,34 @@
+I am sad I do not know what this error means ┌──(kali㉿kali)-[~]
+└─$ #!/bin/bash
+
+# Get the current fan speed
+fan_speed=$(cat /sys/class/hwmon/hwmon0/fan1_input)
+
+# Set the fan speed to high
+echo "Setting fan speed to high"
+echo 255 > /sys/class/hwmon/hwmon0/fan1_output
+
+# Wait for 3.003 seconds
+sleep 3.003
+
+# Set the fan speed to low
+echo "Setting fan speed to low"
+echo 1 > /sys/class/hwmon/hwmon0/fan1_output
+
+# Wait for 0.00000178 seconds
+sleep 0.00000178
+
+# Reset the fan speed to the original value
+echo "Resetting fan speed to original value"
+echo $fan_speed > /sys/class/hwmon/hwmon0/fan1_output
+
+cat: /sys/class/hwmon/hwmon0/fan1_input: No such file or directory
+Setting fan speed to high
+zsh: permission denied: /sys/class/hwmon/hwmon0/fan1_output
+Setting fan speed to low
+zsh: permission denied: /sys/class/hwmon/hwmon0/fan1_output
+Resetting fan speed to original value
+zsh: permission denied: /sys/class/hwmon/hwmon0/fan1_output
+                                                                             
+┌──(kali㉿kali)-[~]
+└─$ 
